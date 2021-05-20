@@ -19,6 +19,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { fakeBackendProvider } from './services/fake-backend';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { fakeBackendProvider } from './services/fake-backend';
     CovidTracebackComponent,
     CovidServiceListComponent,
     AgeGroupComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
