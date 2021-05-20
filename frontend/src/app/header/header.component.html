@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="min-width: 100%; max-width: 100%; height: 60px">
+    <div class="container">
+        <ul class="navbar-nav nav-fill w-100" style="list-style-type: none; display: flex;">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/q1">Q1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/q2/a">Q2a</a> 
+            </li>
+            <li class="nav-item"> 
+                <a class="nav-link" routerLink="/q2/b">Q2b</a> 
+            </li>  
+            <li class="nav-item"> 
+                <a class="nav-link" routerLink="/q3">Q3</a> 
+            </li>  
+            <li class="nav-item"> 
+                <a class="nav-link" routerLink="/q4">Q4</a> 
+            </li>   
+            <li class="nav-item"> 
+                <a class="nav-link" routerLink="/q5">Q5</a> 
+            </li>   
+            <li class="nav-item" *ngIf="!isLoggedin"> 
+                <a class="nav-link" routerLink="/login">login</a> 
+            </li>  
+            <li class="nav-item" *ngIf="isLoggedin"> 
+                <button type="button" class="btn btn-dark" style="color: rgb(148, 147, 147)" (click)="logout()">logout</button> 
+            </li>     
+        </ul>     
+ 
+    </div>
+</nav>

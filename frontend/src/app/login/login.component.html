@@ -1,0 +1,28 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown" style="margin-top: 50px;">
+  <div id="formContent"> 
+  
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="margin-top: 10px; margin-bottom: 10px;">
+      <div class="form-group">
+        <input formControlName="username" type="text" id="login" class="fadeIn second" name="login" placeholder="username">
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input formControlName="password" type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+      </div>
+      
+      <button type="submit" class="fadeIn fourth btn btn-success" style="margin-right: 10px;">Log In</button>
+      <button type="button" class="fadeIn fourth btn btn-success" (click)="signUp()">Sign up</button>
+      
+    </form> 
+  </div>
+</div>
