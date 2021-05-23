@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServiceListService } from '../services/service-list.service';
 
 @Component({
   selector: 'app-track-visits',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./track-visits.component.css']
 })
 export class TrackVisitsComponent implements OnInit {
-
-  constructor() { }
+  services_list = [];
+  trackVisitsForm: FormGroup;
+  
+  constructor(private serviceList: ServiceListService,
+      private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-  }
+    this.services_list = this.serviceList.services;
+    this.trackVisitsForm = this.formBuilder.group({ 
+      date: [null],
+      service: [null],
+      cost: [null, Validators.min(0)]      
+    });
+  } 
+  onSubmit() {
+    if (this.trackVisitsForm.invalid) {
+      alert('Invalid Cost');
+      return;
+    }
 
+    console.log(this.trackVisitsForm.value); 
+  }
 }

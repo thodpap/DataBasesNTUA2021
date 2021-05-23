@@ -1,1 +1,31 @@
-<p>track-visits works!</p>
+<div class="container">
+    <div class="row" style="margin-top: 15px;"> 
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <div class="card-title"><h3>Track Visits</h3></div>
+                <form class="card-text" [formGroup]="trackVisitsForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group date">
+                        <label for="date">Date </label>
+                        <input formControlName="date" type="date" id="date" name="date">
+                    </div> 
+                    <hr>
+                    <div class="form-group">
+                        <label for="services-list">Service</label>
+                        <select class="" aria-label="Default select example" style="width: 60%;" 
+                            id="services-list" name="services-list" formControlName="service">  
+                            <option *ngFor="let s of services_list; let i=index" value="{{i}}">{{s}}</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="cost">Cost $</label>
+                        <input formControlName="cost" type="number" id="cost" name="cost" style="width: 60%;" min="0">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit form</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
