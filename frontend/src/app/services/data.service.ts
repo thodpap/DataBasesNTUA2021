@@ -5,6 +5,7 @@ import { environment } from './../../environments/environment';
 import { Sells } from './sells.model';
 import { TrackVisits } from './track-visits.model';
 import { TrackVisitsResponse } from '../track-visits/track-visits-response.model';
+import { CustomerListResponse } from '../list-customers/customer-list-response.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
@@ -35,7 +36,7 @@ export class DataService {
     getListCustomers(service: string) {
         let params = new HttpParams();
         params.append('service-name', service);
-        return this.http.get<string>(`${environment.apiUrl}/list-customer`, {params: params});
+        return this.http.get< Array<CustomerListResponse> >(`${environment.apiUrl}/list-customer`, {params: params});
     }
 
 

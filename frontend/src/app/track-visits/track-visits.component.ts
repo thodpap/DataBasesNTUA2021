@@ -14,7 +14,10 @@ import { TrackVisitsResponse } from './track-visits-response.model';
 export class TrackVisitsComponent implements OnInit {
   services_list = [];
   trackVisitsForm: FormGroup;
-  results: Array<TrackVisitsResponse> = null;
+  results: Array<TrackVisitsResponse> = [
+    new TrackVisitsResponse('Gym', '50', '2018-06-05', 'Thodoris', 'Paparrigopoulos', '20'),
+    new TrackVisitsResponse('Spa', '50', '2018-06-05', 'Orfeas', 'Filippopoulos', '20'), 
+  ];
 
   constructor(private serviceList: ServiceListService,
       private formBuilder: FormBuilder,

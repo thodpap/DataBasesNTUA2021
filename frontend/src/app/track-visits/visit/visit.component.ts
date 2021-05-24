@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TrackVisitsResponse } from '../track-visits-response.model';
 
 @Component({
   selector: 'app-visit',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visit.component.css']
 })
 export class VisitComponent implements OnInit {
-
+  @Input() person: TrackVisitsResponse;
   constructor() { }
 
   ngOnInit(): void {

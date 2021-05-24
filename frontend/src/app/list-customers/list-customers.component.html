@@ -1,1 +1,35 @@
-<p>list-customers works!</p>
+<div class="container">
+    <div class="row text-center">
+        <h3>List customers per Service</h3>
+    </div>
+    <div class="row text-center">
+        <div class="service"> 
+            <label for="services-list">Service</label>
+            <select (change)="onChange($event.target.value)" aria-label="Default select example" style="width: 20%;" 
+                id="services-list" name="services-list">  
+                <option *ngFor="let s of services; let i=index" value="{{s}}">{{s}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <hr *ngIf="people.length > 0">
+    <div class="row text-center" *ngIf="people.length > 0">
+        <div class="card text-center" style="width: 50%; margin-left: 25%;">
+            <div class="card-body">
+                <div class="row"> 
+                    <div class="col">
+                        <h5>First Name</h5>
+                    </div>
+                    <div class="col">
+                        <h5>Last Name</h5>
+                    </div>
+                    <div class="col">
+                        <h5>Age</h5>
+                    </div>
+                </div>
+                <app-customers *ngFor="let p of people" [customer]="p"></app-customers>
+            </div>
+        </div>
+    </div>
+    
+</div>

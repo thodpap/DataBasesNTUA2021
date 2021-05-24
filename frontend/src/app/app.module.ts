@@ -20,8 +20,8 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { fakeBackendProvider } from './services/fake-backend';
 import { ProfileComponent } from './profile/profile.component';
-import { ChartsModule } from 'ng2-charts';
 import { VisitComponent } from './track-visits/visit/visit.component';
+import { CustomersComponent } from './list-customers/customers/customers.component';
  
 
 @NgModule({
@@ -38,15 +38,15 @@ import { VisitComponent } from './track-visits/visit/visit.component';
     AgeGroupComponent,
     RegisterComponent,
     ProfileComponent,
-    VisitComponent
+    VisitComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule, 
-    ChartsModule
+    ReactiveFormsModule,  
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
