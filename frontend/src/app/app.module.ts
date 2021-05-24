@@ -21,7 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { fakeBackendProvider } from './services/fake-backend';
 import { ProfileComponent } from './profile/profile.component';
 
-import { ChartsModule } from 'ng2-charts'
+// import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { ChartsModule } from 'ng2-charts'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    // ChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

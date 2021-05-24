@@ -19,7 +19,8 @@ export class TrackVisitsComponent implements OnInit {
     this.trackVisitsForm = this.formBuilder.group({ 
       date: [null],
       service: [null],
-      cost: [null, Validators.min(0)]      
+      sign: [null], 
+      cost: [null]
     });
   } 
   onSubmit() {
