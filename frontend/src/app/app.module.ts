@@ -20,8 +20,9 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { fakeBackendProvider } from './services/fake-backend';
 import { ProfileComponent } from './profile/profile.component';
-
-// import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { VisitComponent } from './track-visits/visit/visit.component';
+ 
 
 @NgModule({
   declarations: [
@@ -36,15 +37,16 @@ import { ProfileComponent } from './profile/profile.component';
     CovidServiceListComponent,
     AgeGroupComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    VisitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    // ChartsModule
+    ReactiveFormsModule, 
+    ChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

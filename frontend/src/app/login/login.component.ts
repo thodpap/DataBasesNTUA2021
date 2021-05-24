@@ -59,8 +59,9 @@ export class LoginComponent implements OnInit {
           },
           error => { 
               this.loading = false;
+              alert('Wrong Credentials');
           }
         );
-      console.log(this.f.username.value, this.f.password.value);
+      // console.log(this.f.username.value, this.f.password.value);
   }
 }
