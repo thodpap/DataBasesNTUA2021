@@ -22,6 +22,7 @@ import { fakeBackendProvider } from './services/fake-backend';
 import { ProfileComponent } from './profile/profile.component';
 import { VisitComponent } from './track-visits/visit/visit.component';
 import { CustomersComponent } from './list-customers/customers/customers.component';
+import { ChartsModule } from 'ng2-charts';
  
 
 @NgModule({
@@ -47,6 +48,7 @@ import { CustomersComponent } from './list-customers/customers/customers.compone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,  
+    ChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
