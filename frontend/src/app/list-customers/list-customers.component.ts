@@ -12,8 +12,8 @@ import { CustomerListResponse } from './customer-list-response.model';
 export class ListCustomersComponent implements OnInit {
   services = [];
   people: Array<CustomerListResponse> = [
-    new CustomerListResponse('Thodoris', 'Paparrigopoulos', '20'),
-    new CustomerListResponse('Orfeas', 'Filippopoulos', '20'), 
+    // new CustomerListResponse('Thodoris', 'Paparrigopoulos', '20'),
+    // new CustomerListResponse('Orfeas', 'Filippopoulos', '20'), 
   ];
 
   constructor(private serviceList: ServiceListService,

@@ -24,19 +24,17 @@ export class DataService {
     // }
 
     getTrackVisits(obj: TrackVisits) {
-        let params = new HttpParams();
-        params.append('parameters', obj.toString());
-        return this.http.get< Array<TrackVisitsResponse> >(`${environment.apiUrl}/track-visits`, {params: params});
+        let params = new HttpParams().set("params", obj.toString()); 
+        return this.http.get< Array<TrackVisitsResponse> >(environment.apiUrl + '/track-visits', {params: params});
     }
 
     getSellsPerService() {
-        return this.http.get<Sells>(`${environment.apiUrl}/sells-per-service`);
+        return this.http.get<Sells[]>(environment.apiUrl + '/sells-per-service');
     }
 
     getListCustomers(service: string) {
-        let params = new HttpParams();
-        params.append('service-name', service);
-        return this.http.get< Array<CustomerListResponse> >(`${environment.apiUrl}/list-customer`, {params: params});
+        let params = new HttpParams().set("params", service); 
+        return this.http.get< Array<CustomerListResponse> >(environment.apiUrl + '/list-customer', {params: params});
     }
 
 

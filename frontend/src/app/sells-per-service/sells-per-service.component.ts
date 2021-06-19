@@ -2,7 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { take } from 'rxjs/operators';
+import { DataService } from '../services/data.service';
+import { Sells } from '../services/sells.model';
 import { ServiceListService } from '../services/service-list.service';
+import { TrackVisitsResponse } from '../track-visits/track-visits-response.model';
 
 
 @Component({
@@ -20,18 +24,18 @@ export class SellsPerServiceComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartPlugins = [];
 
-  constructor(private serviceList: ServiceListService ) {
+  constructor(private serviceList: ServiceListService, private dataService: DataService) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
 
   ngOnInit(): void {
-    for (let s of this.serviceList.services){
-      if (s != ' ') { 
-        this.pieChartLabels.push(s);
-        this.pieChartData.push(300);
-      }
-    }
+    this.dataService.getSellsPerService().pipe(take(1)).subscribe((res: Sells[]) => {
+      for (let sell of res) { 
+        this.pieChartLabels.push(sell.service); 
+        this.pieChartData.push(+sell.sells);
+      }  
+    }); 
   }
 
 }
