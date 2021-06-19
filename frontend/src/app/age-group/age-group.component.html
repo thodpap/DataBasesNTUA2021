@@ -1,1 +1,41 @@
-<p>age-group works!</p>
+<div class="container">
+    <div class="row">
+      <h3 class="text-center">Services 20-40</h3>
+        <div style="display: block;">
+            <canvas baseChart
+              [data]="pieChartData_20_40"
+              [labels]="pieChartLabels_20_40"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>
+    </div>
+    <div class="row">
+        <h3 class="text-center">Services 41-60</h3>
+          <div style="display: block;">
+              <canvas baseChart
+                [data]="pieChartData_41_60"
+                [labels]="pieChartLabels_41_60"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+              </canvas>
+            </div>
+      </div>
+      <div class="row">
+        <h3 class="text-center">Services 61+</h3>
+          <div style="display: block;">
+              <canvas baseChart
+                [data]="pieChartData_61"
+                [labels]="pieChartLabels_61"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+              </canvas>
+            </div>
+      </div>
+</div>
