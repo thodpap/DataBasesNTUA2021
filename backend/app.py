@@ -82,6 +82,29 @@ def getListCustomers():
 		return jsonify([])
 	 
 	return jsonify(listCustomers)	
+ 
+covidServiceList = [
+	{ 'service': 'Spa', 'date': '2021-06-05 03:55 04:23'}, # location date enter date enter time and exit time
+	{ 'service': 'Gym', 'date': '2021-06-05 15:55 16:55'},  
+]
+@app.route('/covid-service-list', methods=['GET'])
+def getCovidServiceList():
+	nfc_id = request.args.get('nfc_id')
+	return jsonify(covidServiceList)
+
+
+covidPeople = [
+	{
+		'firstName': 'Thodoris' ,
+		'lastName': 'Paparrigopoulos',
+		'age': 20
+	},
+]
+@app.route('/people-covid', methods=['GET'])
+def getPeopleCovid():
+	nfc_id = request.args.get('nfc_id')
+	return jsonify(covidPeople) 
+
 
 sellsPer20 = [
 	{'service': "Pool", 'sells': 100},
@@ -115,24 +138,24 @@ def getSellsPerAge(age):
 	
 	return "Error"	
 
-covidServiceList = [
-	{ 'service': 'Spa', 'date': '2021-06-05 03:55 04:23'}, # location date enter date enter time and exit time
-	{ 'service': 'Gym', 'date': '2021-06-05 15:55 16:55'},  
-]
-@app.route('/covid-service-list', methods=['GET'])
-def getCovidServiceList():
-	return jsonify(covidServiceList)
 
-
-covidPeople = [
-	{
-		'firstName': 'Thodoris' ,
+@app.route('/profile-data', methods=['GET'])
+def getProfileData():
+	nfc_id = request.args.get('nfc_id') 
+	data = {
+		'firstName': 'Thodoris',
 		'lastName': 'Paparrigopoulos',
-		'age': 20
-	},
-]
-@app.route('/people-covid', methods=['GET'])
-def getPeopleCovid():
-	return jsonify(covidPeople) 
+		'email': 'paparrigopoulosthodoris@gmail.com',
+		'number': '6971670732'
+	}
+	return jsonify(data)
+
+@app.route('/profile-data', methods=['PUT'])
+def updatePassword():
+	data = request.get_json()
+	nfc_id = data['nfc_id']
+	password = data['password'] 
+	return jsonify("success")
+
 if __name__ == "__main__":
 	app.run(debug=True)

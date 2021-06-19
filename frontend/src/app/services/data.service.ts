@@ -8,9 +8,12 @@ import { TrackVisitsResponse } from '../track-visits/track-visits-response.model
 import { CustomerListResponse } from '../list-customers/customer-list-response.model';
 import { Location } from '../covid-service-list/location/location.model';
 import { Person } from '../covid-traceback/person/person.model';
+import { ProfileData } from '../profile/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
+    nfc_id: string = "74832740928374937"; 
+
     constructor(private http: HttpClient) { }
 
     // getAll() {
@@ -45,17 +48,29 @@ export class DataService {
     
     // Get the location of where the user went q3
     getLocations() {
-        return this.http.get<Location[]>(environment.apiUrl + '/covid-service-list');
+        let params = new HttpParams().set("nfc_id", this.nfc_id);
+        return this.http.get<Location[]>(environment.apiUrl + '/covid-service-list', {params: params});
     }
 
     // q4
     getPeopleCovid() {
-        return this.http.get<Person[]>(environment.apiUrl + '/people-covid');
+        let params = new HttpParams().set("nfc_id", this.nfc_id);
+        return this.http.get<Person[]>(environment.apiUrl + '/people-covid', {params: params});
     }
 
     // services per ages q5
     getSellsPerAge(age : number) {
         return this.http.get<Sells[]>(environment.apiUrl + '/sells-per-age/' + age); 
+    }
+
+    // get Users profile data
+    getUserData() {
+        let params = new HttpParams().set("nfc_id", this.nfc_id);
+        return this.http.get<ProfileData>(environment.apiUrl + '/profile-data', {params: params});
+    }
+    changePassword(password:string) {
+        const body = {nfc_id: this.nfc_id, password: password};
+        return this.http.put<any>(environment.apiUrl + '/profile-data', body);
     }
 
 
