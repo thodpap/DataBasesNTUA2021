@@ -1,0 +1,27 @@
+7)
+
+fields: 1)type(str)
+	2)NFC_ID(int), type(str), Arrival_Date_time(date), Departure_Date_time(date) 
+
+8)
+
+fields: 1)service(str), total_count(int)
+	2)FirstName(str), LastName(str), BirthDate(date), Arrival_Date_time(date), Departure_Date_time(date), email(string), phone(
+	
+9)
+
+fields: 1)NFC_ID(int), SpaceID(int), Arrival_Date_time(date), Departure_Date_time(date),
+
+10)
+
+fields: 1)NFC_ID(int), SpaceID(int), Arrival_Date_time(date), Departure_Date_time(date)
+
+11)
+
+fields: 1)SpaceID(int)
+	2)counter(int), ServiceID(int), charge_Date_time(date)
+	3)max_used(int), ServiceID(int)
+
+-------------------------------------------------
+ΤΩΡΑ ΕΣΥ ΞΕΡΕΙΣ ΤΙ ΕΙΝΑΙ ΤΙ, ΔΗΛΑΔΗ ΕΣΥ ΞΕΡΕΙΣ ΕΑΝ ΤΑ DATES ΤΑ ΔΙΑΧΕΙΡΙΖΕΣΑΙ ΩΣ STRINGS ΣΤΟ BACK_END Η ΩΣ datetime.datetime
+-------------------------------------------------
