@@ -7,6 +7,7 @@ import { TrackVisits } from './track-visits.model';
 import { TrackVisitsResponse } from '../track-visits/track-visits-response.model';
 import { CustomerListResponse } from '../list-customers/customer-list-response.model';
 import { Location } from '../covid-service-list/location/location.model';
+import { Person } from '../covid-traceback/person/person.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
@@ -41,15 +42,22 @@ export class DataService {
         let params = new HttpParams().set("params", service); 
         return this.http.get<CustomerListResponse[]>(environment.apiUrl + '/list-customer', {params: params});
     }
+    
+    // Get the location of where the user went q3
+    getLocations() {
+        return this.http.get<Location[]>(environment.apiUrl + '/covid-service-list');
+    }
 
-    // seravices per ages q5
+    // q4
+    getPeopleCovid() {
+        return this.http.get<Person[]>(environment.apiUrl + '/people-covid');
+    }
+
+    // services per ages q5
     getSellsPerAge(age : number) {
         return this.http.get<Sells[]>(environment.apiUrl + '/sells-per-age/' + age); 
     }
 
-    getLocations() {
-        return this.http.get<Location[]>(environment.apiUrl + '/covid-service-list');
-    }
 
 
 }

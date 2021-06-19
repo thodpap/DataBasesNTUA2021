@@ -24,6 +24,7 @@ import { VisitComponent } from './track-visits/visit/visit.component';
 import { CustomersComponent } from './list-customers/customers/customers.component';
 import { ChartsModule } from 'ng2-charts';
 import { LocationComponent } from './covid-service-list/location/location.component';
+import { PersonComponent } from './covid-traceback/person/person.component';
  
 
 @NgModule({
@@ -42,7 +43,8 @@ import { LocationComponent } from './covid-service-list/location/location.compon
     ProfileComponent,
     VisitComponent,
     CustomersComponent,
-    LocationComponent
+    LocationComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,

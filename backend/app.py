@@ -123,5 +123,16 @@ covidServiceList = [
 def getCovidServiceList():
 	return jsonify(covidServiceList)
 
+
+covidPeople = [
+	{
+		'firstName': 'Thodoris' ,
+		'lastName': 'Paparrigopoulos',
+		'age': 20
+	},
+]
+@app.route('/people-covid', methods=['GET'])
+def getPeopleCovid():
+	return jsonify(covidPeople) 
 if __name__ == "__main__":
 	app.run(debug=True)

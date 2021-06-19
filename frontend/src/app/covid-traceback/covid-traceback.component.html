@@ -1,1 +1,23 @@
-<p>covid-traceback works!</p>
+<div class="container">
+    <div class="row text-center">
+        <h3>Covid Possible Infections</h3>
+    </div>
+    <div class="row text-center">
+        <div class="card text-center" style="width: 50%; margin-left: 25%;">
+            <div class="card-body">
+                <div class="row"> 
+                    <div class="col">
+                        <h5>First Name</h5>
+                    </div>
+                    <div class="col">
+                        <h5>Last Name</h5>
+                    </div>
+                    <div class="col">
+                        <h5>Age</h5>
+                    </div>
+                </div>
+                <app-person *ngFor="let person of people" [person]="person"></app-person>
+            </div>
+        </div>
+    </div>
+</div>

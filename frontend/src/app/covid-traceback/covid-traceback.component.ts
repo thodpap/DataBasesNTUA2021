@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
+import { DataService } from '../services/data.service';
+import { Person } from './person/person.model';
 
 @Component({
   selector: 'app-covid-traceback',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./covid-traceback.component.css']
 })
 export class CovidTracebackComponent implements OnInit {
-
-  constructor() { }
+  people: Person[] = [];
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.getPeopleCovid().pipe(take(1)).subscribe(res => {
+      console.log(res);
+      for (let person of res) {
+        this.people.push(new Person(person.firstName, person.lastName, +person.age));
+      }
+      this.people = res;
+    })
   }
 
 }
