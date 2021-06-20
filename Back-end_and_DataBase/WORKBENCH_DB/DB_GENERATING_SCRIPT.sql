@@ -119,6 +119,7 @@ DROP TABLE IF EXISTS `customers_emails`;
 CREATE TABLE `customers_emails` (
   `NFC_ID` int NOT NULL,
   `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`email`),
   KEY `NFC ID_idx` (`NFC_ID`),
   CONSTRAINT `NFC_ID_table_emails` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -144,6 +145,7 @@ DROP TABLE IF EXISTS `customers_phones`;
 CREATE TABLE `customers_phones` (
   `NFC_ID` int NOT NULL,
   `phone` varchar(12) NOT NULL,
+  PRIMARY KEY (`phone`),
   KEY `NFC ID_customers_phones_idx` (`NFC_ID`),
   CONSTRAINT `NFC_ID_customers_phones` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -571,4 +573,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-20 22:40:41
+-- Dump completed on 2021-06-21  0:58:26
