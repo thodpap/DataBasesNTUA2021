@@ -44,21 +44,19 @@
                                 <h5>Service</h5>
                             </div>
                             <div class="col">
-                                <h5>Date</h5>
-                            </div>
-                            <div class="col">
                                 <h5>First Name</h5>
                             </div>
                             <div class="col">
                                 <h5>Last Name</h5>
                             </div>
                             <div class="col">
-                                <h5>Age</h5>
+                                <h5>Arrival Time</h5>
                             </div>
-                        </div>
-                        <div class="row">
-                            <app-visit *ngFor="let r of results;" [person]="r"></app-visit>
-                        </div>
+                            <div class="col">
+                                <h5>Departure Time</h5>
+                            </div> 
+                        </div> 
+                        <app-visit *ngFor="let r of results;" [person]="r"></app-visit>
                         
                     </div>
                 </div>

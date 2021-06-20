@@ -13,11 +13,7 @@ export class CovidTracebackComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getPeopleCovid().pipe(take(1)).subscribe(res => {
-      console.log(res);
-      for (let person of res) {
-        this.people.push(new Person(person.firstName, person.lastName, +person.age));
-      }
+    this.dataService.getPeopleCovid().pipe(take(1)).subscribe(res => { 
       this.people = res;
     })
   }

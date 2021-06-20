@@ -33,7 +33,7 @@ export class SellsPerServiceComponent implements OnInit {
     this.dataService.getSellsPerService().pipe(take(1)).subscribe((res: Sells[]) => {
       for (let sell of res) { 
         this.pieChartLabels.push(sell.service); 
-        this.pieChartData.push(+sell.sells);
+        this.pieChartData.push(Number(sell.sells));
       }  
     }); 
   }

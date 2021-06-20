@@ -15,8 +15,8 @@ export class TrackVisitsComponent implements OnInit {
   services_list = [];
   trackVisitsForm: FormGroup;
   results: Array<TrackVisitsResponse> = [
-    new TrackVisitsResponse('Gym', '50', '2018-06-05', 'Thodoris', 'Paparrigopoulos', '20'),
-    new TrackVisitsResponse('Spa', '50', '2018-06-05', 'Orfeas', 'Filippopoulos', '20'), 
+    // new TrackVisitsResponse('Gym', '50', '2018-06-05', 'Thodoris', 'Paparrigopoulos', '20'),
+    // new TrackVisitsResponse('Spa', '50', '2018-06-05', 'Orfeas', 'Filippopoulos', '20'), 
   ];
 
   constructor(private serviceList: ServiceListService,
@@ -24,7 +24,7 @@ export class TrackVisitsComponent implements OnInit {
       private dataService :DataService) { }
 
   ngOnInit(): void {
-    this.services_list = this.serviceList.services;
+    this.services_list = this.serviceList.allServices;
     this.trackVisitsForm = this.formBuilder.group({ 
       date: [null],
       service: [null],
@@ -62,11 +62,8 @@ export class TrackVisitsComponent implements OnInit {
       sign,
       this.trackVisitsForm.value.cost
     );
-
-
-    console.log(argument); 
-    this.dataService.getTrackVisits(argument).pipe(take(1)).subscribe((res: Array<TrackVisitsResponse>) => {
-      console.log(res);
+ 
+    this.dataService.getTrackVisits(argument).pipe(take(1)).subscribe((res: TrackVisitsResponse[]) => { 
       this.results = res; 
     });
   }

@@ -1,8 +1,7 @@
 export class TrackVisitsResponse {
-    constructor(public service: string,
-        public cost: string,
-        public date: string,
+    constructor(public service: string, 
         public firstName: string,
         public lastName: string,
-        public age: string) {}
+        public arrivalDate: string,
+        public departureDate: string) {}
 }

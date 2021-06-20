@@ -1,3 +1,3 @@
 export class Location {
-    constructor(public service: string, public date: string) {}
+    constructor(public service: string, public arrivalDate: string, public departureDate: string) {}
 }

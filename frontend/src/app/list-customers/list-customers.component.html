@@ -14,9 +14,9 @@
     
     <hr *ngIf="people.length > 0">
     <div class="row text-center" *ngIf="people.length > 0">
-        <div class="card text-center" style="width: 50%; margin-left: 25%;">
+        <div class="card text-center" style="width: 80%; margin-left: 15%;">
             <div class="card-body">
-                <div class="row"> 
+                <div class="row text-center"> 
                     <div class="col">
                         <h5>First Name</h5>
                     </div>
@@ -24,7 +24,10 @@
                         <h5>Last Name</h5>
                     </div>
                     <div class="col">
-                        <h5>Age</h5>
+                        <h5>Birthdate</h5>
+                    </div> 
+                    <div class="col">
+                        <h5>Phone</h5>
                     </div>
                 </div>
                 <app-customers *ngFor="let p of people" [customer]="p"></app-customers>

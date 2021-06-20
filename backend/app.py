@@ -7,10 +7,11 @@ CORS(app)
 trackVisits = [
     {
         'service': 'Gym',
-        'date': '2018-06-05',
         'firstName': 'Thodoris',
         'lastName': 'Paparrigopoulos',
-        'age': 20
+        'arrivalDate': '03:55',
+        'departureDate': '05:59',
+        'date': '2018-06-05',
     }
 ]
 
@@ -59,16 +60,18 @@ listCustomers = [
     {
         'firstName': 'Thodoris',
         'lastName': 'Paparrigopoulos',
-        'age': 20
+        'age': '2018-05-05',
+        'email': 'paparrigopoulosthodoris@gmail.com',
+        'phone': '6971670732'
     },
     {
-        'firstName': 'Orfeas',
-        'lastName': 'Filippopoulos',
-        'age': 20
+        'firstName': 'Thodoris',
+        'lastName': 'Paparrigopoulos',
+        'age': '2018-05-05',
+        'email': 'paparrigopoulosthodoris@gmail.com',
+        'phone': '6971670732'
     },
-]
-
-
+] 
 @app.route('/list-customer', methods=['GET'])
 def getListCustomers():
     service = request.args.get('params')
@@ -79,11 +82,9 @@ def getListCustomers():
 
 
 covidServiceList = [
-    {'service': 'Spa', 'date': '2021-06-05 03:55 04:23'},  # location date enter date enter time and exit time
-    {'service': 'Gym', 'date': '2021-06-05 15:55 16:55'},
-]
-
-
+    {'service': 'Spa', 'arrivalDate': '2021-06-05 03:55', 'departureDate': '2021-06-05 04:23'},  
+    {'service': 'Spa', 'arrivalDate': '2021-06-05 03:55', 'departureDate': '2021-06-05 04:23'},  
+] 
 @app.route('/covid-service-list', methods=['GET'])
 def getCovidServiceList():
     nfc_id = request.args.get('nfc_id')
@@ -94,11 +95,11 @@ covidPeople = [
     {
         'firstName': 'Thodoris',
         'lastName': 'Paparrigopoulos',
-        'age': 20
+        'service': 'Spa',
+        'arrivalDate': '2021-06-05 03:55', 
+        'departureDate': '2021-06-05 04:23'
     },
-]
-
-
+] 
 @app.route('/people-covid', methods=['GET'])
 def getPeopleCovid():
     nfc_id = request.args.get('nfc_id')
