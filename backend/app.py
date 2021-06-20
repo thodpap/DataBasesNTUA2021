@@ -1,5 +1,35 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS 
+import mysql.connector 
+from fields import tuples_to_object 
+
+def close_query(connection, cursor):
+    if connection.is_connected():
+        cursor.close()
+        connection.close()
+        print("done")
+
+def execute_query(connection, query, cursor):
+    cursor.execute(query)
+    result = cursor.fetchall()
+    close_query(connection, cursor)
+
+    return result
+try:
+    connection = mysql.connector.connect(
+        host='localhost',
+        database='databases2021',
+        user='root',
+        password='password'
+    )
+
+    cursor = connection.cursor()  
+    
+    # test
+    # print(tuples_to_object(execute_query(connection, "SELECT * from customers;", cursor), 
+    #     ["nfc_id", "firstName", "lastName", "birth", "doc_num", "doc_type", "IssuingAuthority", "password", "arrivalDate","departureDate","age"]))
+except mysql.connector.Error as err:
+    print("Something went wrong: {}".format(err))
 
 app = Flask(__name__)
 CORS(app)
@@ -13,9 +43,7 @@ trackVisits = [
         'departureDate': '05:59',
         'date': '2018-06-05',
     }
-]
-
-
+] 
 @app.route('/track-visits', methods=['GET'])
 def getTrackVisits():
     date = None
