@@ -32,7 +32,7 @@ CREATE TABLE `access` (
   KEY `SpaceID_idx` (`SpaceID`),
   CONSTRAINT `NFC ID_access_table` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `SpaceID_access_table` FOREIGN KEY (`SpaceID`) REFERENCES `places` (`PlaceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `charge_of_service` (
   KEY `SereviceID_idx` (`ServiceID`),
   CONSTRAINT `NFC_ID_charge_of_service` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ServiceID_charge_of_service` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `customers` (
   `age` int NOT NULL,
   PRIMARY KEY (`NFC_ID`),
   KEY `AgeIndex` (`age`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,8 +112,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ; 
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -160,7 +159,7 @@ CREATE TABLE `customers_emails` (
   PRIMARY KEY (`email`),
   KEY `NFC ID_idx` (`NFC_ID`),
   CONSTRAINT `NFC_ID_table_emails` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +185,7 @@ CREATE TABLE `customers_phones` (
   PRIMARY KEY (`phone`),
   KEY `NFC ID_customers_phones_idx` (`NFC_ID`),
   CONSTRAINT `NFC_ID_customers_phones` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +228,7 @@ CREATE TABLE `default_services` (
   `stars` int DEFAULT NULL,
   KEY `ServiceID_idx` (`ServiceID`),
   CONSTRAINT `ServiceID_deafault_services_table` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +257,7 @@ CREATE TABLE `enroll_in` (
   KEY `ServiceID_idx` (`Service_ID`),
   CONSTRAINT `NFC ID_enrolled_in` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ServiceID_enrolled_in` FOREIGN KEY (`Service_ID`) REFERENCES `enrolled_services` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +274,6 @@ UNLOCK TABLES;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -331,7 +329,7 @@ CREATE TABLE `enrolled_services` (
   `enroll_price` float NOT NULL,
   KEY `ServiceID_idx` (`ServiceID`),
   CONSTRAINT `ServiceID_enrolled_services` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -416,7 +414,7 @@ CREATE TABLE `places` (
   `groundfloor` tinyint DEFAULT NULL,
   `number_of_beds` int NOT NULL,
   PRIMARY KEY (`PlaceID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -443,7 +441,7 @@ CREATE TABLE `provided_to` (
   KEY `PlaceID_idx` (`PlaceID`),
   CONSTRAINT `ServiceID_provided_to` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON UPDATE CASCADE,
   CONSTRAINT `SpaceID_provided_to` FOREIGN KEY (`PlaceID`) REFERENCES `places` (`PlaceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +496,7 @@ CREATE TABLE `services` (
   `ServiceID` int NOT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`ServiceID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,8 +512,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ; 
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -555,7 +552,7 @@ CREATE TABLE `visits` (
   KEY `Arrival` (`Arrival_Date_time`),
   CONSTRAINT `NFC ID_Visists_table` FOREIGN KEY (`NFC_ID`) REFERENCES `customers` (`NFC_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `SpaceID_Visists_table` FOREIGN KEY (`SpaceID`) REFERENCES `places` (`PlaceID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -585,8 +582,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `customersdata` AS select `c`.`FirstName` AS `FIRST_NAME`,`c`.`LastName` AS `LAST_NAME`,`c`.`BirthDate` AS `BIRTH_DATE`,`c`.`arrival` AS `ARRIVAL_DATE_TIME`,`c`.`departure` AS `DEPARTURE_DATE_TIME`,`ce`.`email` AS `email`,`cp`.`phone` AS `phone` from ((`customers` `c` join `customers_emails` `ce` on((`c`.`NFC_ID` = `ce`.`NFC_ID`))) join `customers_phones` `cp` on((`c`.`NFC_ID` = `cp`.`NFC_ID`))) */;
@@ -603,8 +599,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `for_aisle` AS select `visits`.`NFC_ID` AS `NFC_ID`,`visits`.`SpaceID` AS `SpaceID`,`visits`.`Arrival_Date_time` AS `Arrival_Date_time`,`visits`.`Departure_Date_time` AS `Departure_Date_time`,`places`.`PlaceID` AS `PlaceID`,`places`.`SpaceName` AS `SpaceName`,`places`.`aisle` AS `aisle`,`places`.`elevator` AS `elevator`,`places`.`groundfloor` AS `groundfloor`,`places`.`number_of_beds` AS `number_of_beds` from (`visits` join `places` on((`visits`.`SpaceID` = `places`.`PlaceID`))) */;
@@ -621,8 +616,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `gym` AS select `c`.`FirstName` AS `FirstName`,`c`.`LastName` AS `LastName`,`c`.`BirthDate` AS `BirthDate`,`c`.`arrival` AS `Arrival`,`c`.`departure` AS `Departure`,`ce`.`email` AS `email`,`cp`.`phone` AS `phone` from (((`customers` `c` join `customers_emails` `ce` on((`c`.`NFC_ID` = `ce`.`NFC_ID`))) join `customers_phones` `cp` on((`c`.`NFC_ID` = `cp`.`NFC_ID`))) join `enroll_in` `en` on((`c`.`NFC_ID` = `en`.`NFC_ID`))) where (`en`.`Service_ID` = 4) */;
@@ -639,8 +633,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `meeting_room` AS select `c`.`FirstName` AS `FirstName`,`c`.`LastName` AS `LastName`,`c`.`BirthDate` AS `BirthDate`,`c`.`arrival` AS `Arrival`,`c`.`departure` AS `Departure`,`ce`.`email` AS `email`,`cp`.`phone` AS `phone` from (((`customers` `c` join `customers_emails` `ce` on((`c`.`NFC_ID` = `ce`.`NFC_ID`))) join `customers_phones` `cp` on((`c`.`NFC_ID` = `cp`.`NFC_ID`))) join `enroll_in` `en` on((`c`.`NFC_ID` = `en`.`NFC_ID`))) where (`en`.`Service_ID` = 6) */;
@@ -657,8 +650,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `sales` AS select `services`.`type` AS `type`,`temp`.`TOTAL_COUNT` AS `total_count` from (`services` join (select `charge_of_service`.`ServiceID` AS `ServiceID`,sum(`charge_of_service`.`ServiceID`) AS `TOTAL_COUNT` from `charge_of_service` group by `charge_of_service`.`ServiceID`) `temp`) where (`temp`.`ServiceID` = `services`.`ServiceID`) */;
@@ -675,8 +667,7 @@ UNLOCK TABLES;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
 /*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 SET character_set_results     = utf8mb4 */; 
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `saouna` AS select `c`.`FirstName` AS `FirstName`,`c`.`LastName` AS `LastName`,`c`.`BirthDate` AS `BirthDate`,`c`.`arrival` AS `Arrival`,`c`.`departure` AS `Departure`,`ce`.`email` AS `email`,`cp`.`phone` AS `phone` from (((`customers` `c` join `customers_emails` `ce` on((`c`.`NFC_ID` = `ce`.`NFC_ID`))) join `customers_phones` `cp` on((`c`.`NFC_ID` = `cp`.`NFC_ID`))) join `enroll_in` `en` on((`c`.`NFC_ID` = `en`.`NFC_ID`))) where (`en`.`Service_ID` = 5) */;
