@@ -4,19 +4,19 @@ import { Injectable } from "@angular/core";
 export class ServiceListService {
     services = [
         ' ',  
-        'Gym', 
-        'Saouna',
-        'Meeting Room'
+        'gym', 
+        'saouna',
+        'meeting room'
     ]
 
     allServices = [
         ' ',  
-        'Gym', 
-        'Saouna',
-        'Meeting Room',
-        'Accomondation room',
-        'Food-cocktail in bar',
-        'Food-cocktail in Restaurant' ,
-        'Hair Saloon'
+        'gym', 
+        'saouna',
+        'meeting room',
+        'accomondation room',
+        'food-cocktail in bar',
+        'food-cocktail in restaurant' ,
+        'hair saloon'
     ]
 }

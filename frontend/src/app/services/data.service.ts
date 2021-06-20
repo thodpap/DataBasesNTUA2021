@@ -9,10 +9,13 @@ import { CustomerListResponse } from '../list-customers/customer-list-response.m
 import { Location } from '../covid-service-list/location/location.model';
 import { Person } from '../covid-traceback/person/person.model';
 import { ProfileData } from '../profile/profile.model';
+import { Subject } from 'rxjs'; 
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
     nfc_id: string; 
+    subjectType = new Subject<number>(); 
+    subjectAge = new Subject<number>(); 
 
     constructor(private http: HttpClient) { }
 
@@ -63,6 +66,14 @@ export class DataService {
         return this.http.get<Sells[]>(environment.apiUrl + '/sells-per-age/' + age); 
     }
 
+    getSellsPerAgePerService(age:number) {
+        return this.http.get<Sells[]>(environment.apiUrl + '/per-service-per-age/' + age); 
+    }
+
+    getPopularServices(age:number) {
+        return this.http.get<Sells[]>(environment.apiUrl + '/popular-per-age/' + age);
+    }
+    
     // get Users profile data
     getUserData() {
         let params = new HttpParams().set("nfc_id", this.nfc_id);

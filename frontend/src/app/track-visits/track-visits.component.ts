@@ -14,10 +14,7 @@ import { TrackVisitsResponse } from './track-visits-response.model';
 export class TrackVisitsComponent implements OnInit {
   services_list = [];
   trackVisitsForm: FormGroup;
-  results: Array<TrackVisitsResponse> = [
-    // new TrackVisitsResponse('Gym', '50', '2018-06-05', 'Thodoris', 'Paparrigopoulos', '20'),
-    // new TrackVisitsResponse('Spa', '50', '2018-06-05', 'Orfeas', 'Filippopoulos', '20'), 
-  ];
+  results: Array<TrackVisitsResponse> = [];
 
   constructor(private serviceList: ServiceListService,
       private formBuilder: FormBuilder,
@@ -45,17 +42,24 @@ export class TrackVisitsComponent implements OnInit {
     }
     switch(this.trackVisitsForm.value.sign) {
       case "0":
-        sign = '>';
+        sign = "null"
         break;
       case "1":
-        sign = '<';
+        sign = '>';
         break;
       case "2":
+        sign = '<';
+        break;
+      case "3":
         sign = '=';
         break;
+      case "4":
+        sign = '>=';
+      case "5":
+        sign = '<='; 
       default:
         break;
-    }
+    } 
     const argument = new TrackVisits(
       this.trackVisitsForm.value.date,
       service,
