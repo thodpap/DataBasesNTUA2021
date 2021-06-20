@@ -1,41 +1,30 @@
 <div class="container">
-    <div class="row">
-      <h3 class="text-center">Services 20-40</h3>
-        <div style="display: block;">
-            <canvas baseChart
-              [data]="pieChartData_20_40"
-              [labels]="pieChartLabels_20_40"
-              [chartType]="pieChartType"
-              [options]="pieChartOptions"
-              [plugins]="pieChartPlugins"
-              [legend]="pieChartLegend">
-            </canvas>
-          </div>
+  <div class="col">
+    <div class="row age"> 
+      <label for="age">Age Group</label>
+      <select (change)="onChange($event.target.value)"
+      style="width: 20%;" 
+      id="age" name="age"> 
+      <option value="0"> </option>
+      <option value="1">20-40</option>
+      <option value="2">41-60</option>
+      <option value="3">61+</option> 
+    </select>
     </div>
-    <div class="row">
-        <h3 class="text-center">Services 41-60</h3>
-          <div style="display: block;">
-              <canvas baseChart
-                [data]="pieChartData_41_60"
-                [labels]="pieChartLabels_41_60"
-                [chartType]="pieChartType"
-                [options]="pieChartOptions"
-                [plugins]="pieChartPlugins"
-                [legend]="pieChartLegend">
-              </canvas>
-            </div>
-      </div>
-      <div class="row">
-        <h3 class="text-center">Services 61+</h3>
-          <div style="display: block;">
-              <canvas baseChart
-                [data]="pieChartData_61"
-                [labels]="pieChartLabels_61"
-                [chartType]="pieChartType"
-                [options]="pieChartOptions"
-                [plugins]="pieChartPlugins"
-                [legend]="pieChartLegend">
-              </canvas>
-            </div>
-      </div>
+    <div class="row type"> 
+      <label for="type">Diagram type</label>
+      <select (change)="onChange2($event.target.value)"
+      style="width: 20%;" 
+      id="type" name="type"> 
+      <option value="0"></option>
+      <option value="1">Sells per room</option>
+      <option value="2">Sells per service</option>
+      <option value="3">Services with most visits</option> 
+    </select>
+    </div>
+  </div>
+   <div class="col">
+     <app-graph *ngIf="age > 0 && type >= 0"></app-graph>
+   </div>
 </div>
+ 

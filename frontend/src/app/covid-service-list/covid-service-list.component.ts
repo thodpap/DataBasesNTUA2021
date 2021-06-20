@@ -16,11 +16,6 @@ export class CovidServiceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getLocations().pipe(take(1)).subscribe( res => {
-      this.locations = [];
-      console.log(res);
-      for (let loc of res) {
-        this.locations.push(new Location(loc.service, loc.date));
-      }
       this.locations = res;
     });
   }

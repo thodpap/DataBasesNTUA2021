@@ -16,15 +16,14 @@ import { AgeGroupComponent } from './age-group/age-group.component';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
-import { fakeBackendProvider } from './services/fake-backend';
+import { CommonModule } from '@angular/common';  
 import { ProfileComponent } from './profile/profile.component';
 import { VisitComponent } from './track-visits/visit/visit.component';
 import { CustomersComponent } from './list-customers/customers/customers.component';
 import { ChartsModule } from 'ng2-charts';
 import { LocationComponent } from './covid-service-list/location/location.component';
 import { PersonComponent } from './covid-traceback/person/person.component';
+import { GraphComponent } from './age-group/graph/graph.component';
  
 
 @NgModule({
@@ -38,13 +37,13 @@ import { PersonComponent } from './covid-traceback/person/person.component';
     ListCustomersComponent,
     CovidTracebackComponent,
     CovidServiceListComponent,
-    AgeGroupComponent,
-    RegisterComponent,
+    AgeGroupComponent, 
     ProfileComponent,
     VisitComponent,
     CustomersComponent,
     LocationComponent,
-    PersonComponent
+    PersonComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +55,7 @@ import { PersonComponent } from './covid-traceback/person/person.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, 
   ],
   bootstrap: [AppComponent],
   exports: [

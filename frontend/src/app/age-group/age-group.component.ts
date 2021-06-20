@@ -1,9 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'; 
 import { ChartType, ChartOptions } from 'chart.js';
-import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
-import { take } from 'rxjs/operators';
-import { DataService } from '../services/data.service';
-import { Sells } from '../services/sells.model';
+import { DataService } from '../services/data.service'; 
 import { ServiceListService } from '../services/service-list.service'; 
 
 @Component({
@@ -15,44 +12,53 @@ export class AgeGroupComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels_20_40: Label[] = [];
-  public pieChartData_20_40: SingleDataSet = [];  
-  
-  public pieChartLabels_41_60: Label[] = [];
-  public pieChartData_41_60: SingleDataSet = [];  
-
-  public pieChartLabels_61: Label[] = [];
-  public pieChartData_61: SingleDataSet = [];  
-
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
-  
+  age = 0;
+  type = 0;    
   constructor(private serviceList: ServiceListService, private dataService: DataService) {
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
+    
   }
 
   ngOnInit(): void {
-    this.dataService.getSellsPerAge(20).pipe(take(1)).subscribe((res: Sells[]) => {
-      for (let sell of res) {
-        this.pieChartLabels_20_40.push(sell.service);
-        this.pieChartData_20_40.push(sell.sells);
-      }
-    });
-    this.dataService.getSellsPerAge(41).pipe(take(1)).subscribe((res: Sells[]) => {
-      for (let sell of res) {
-        this.pieChartLabels_41_60.push(sell.service);
-        this.pieChartData_41_60.push(sell.sells);
-      }
-    });
-    this.dataService.getSellsPerAge(61).pipe(take(1)).subscribe((res: Sells[]) => {
-      for (let sell of res) {
-        this.pieChartLabels_61.push(sell.service);
-        this.pieChartData_61.push(sell.sells);
-      }
-    }); 
+     
   } 
+  onChange(a) {
+    switch(a) {
+      case "0":
+        return ;
+        case "1":
+          this.age = 20;
+          break;
+        case "2":
+          this.age = 41;
+          break;
+        case "3":
+          this.age = 61;
+          break;
+      default:
+        break;
+    }
+    this.dataService.subjectAge.next(this.age);
+    console.log(a);
+  } 
+  onChange2(a) {
+    console.log(a);
+    switch(a) {
+      case "0":
+        return ;
+        case "1":
+          this.type = 0;
+          break;
+        case "2":
+          this.type = 1;
+          break;
+        case "3":
+          this.type = 2;
+          break;
+      default:
+        break; 
+    }
+    this.dataService.subjectType.next(this.type);
+  }
 
 }
 

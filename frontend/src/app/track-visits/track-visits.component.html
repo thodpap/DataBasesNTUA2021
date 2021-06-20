@@ -22,9 +22,12 @@
                             <label for="cost">Cost</label>
                             <select aria-label="Default select example" style="width: 20%;" 
                                 id="sign" name="sign" formControlName="sign">   
-                                <option value="0">></option>
-                                <option value="1"><</option>
-                                <option value="2">=</option>
+                                <option value="0"></option>
+                                <option value="1">></option>
+                                <option value="2"><</option>
+                                <option value="3">=</option>
+                                <option value="4">>=</option>
+                                <option value="5"><=</option>
                             </select>
                             $
                             <input formControlName="cost" type="number" id="cost" name="cost" style="width: 50%;" min="0">
@@ -44,21 +47,19 @@
                                 <h5>Service</h5>
                             </div>
                             <div class="col">
-                                <h5>Date</h5>
-                            </div>
-                            <div class="col">
                                 <h5>First Name</h5>
                             </div>
                             <div class="col">
                                 <h5>Last Name</h5>
                             </div>
                             <div class="col">
-                                <h5>Age</h5>
+                                <h5>Arrival Time</h5>
                             </div>
-                        </div>
-                        <div class="row">
-                            <app-visit *ngFor="let r of results;" [person]="r"></app-visit>
-                        </div>
+                            <div class="col">
+                                <h5>Departure Time</h5>
+                            </div> 
+                        </div> 
+                        <app-visit *ngFor="let r of results;" [person]="r" style="margin-bottom: 7px;"></app-visit>
                         
                     </div>
                 </div>
