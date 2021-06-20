@@ -16,8 +16,7 @@ import { AgeGroupComponent } from './age-group/age-group.component';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common'; 
 import { fakeBackendProvider } from './services/fake-backend';
 import { ProfileComponent } from './profile/profile.component';
 import { VisitComponent } from './track-visits/visit/visit.component';
@@ -38,8 +37,7 @@ import { PersonComponent } from './covid-traceback/person/person.component';
     ListCustomersComponent,
     CovidTracebackComponent,
     CovidServiceListComponent,
-    AgeGroupComponent,
-    RegisterComponent,
+    AgeGroupComponent, 
     ProfileComponent,
     VisitComponent,
     CustomersComponent,

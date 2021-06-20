@@ -6,16 +6,14 @@ import { CovidTracebackComponent } from './covid-traceback/covid-traceback.compo
 import { HomeComponent } from './home/home.component';
 import { ListCustomersComponent } from './list-customers/list-customers.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component'; 
 import { SellsPerServiceComponent } from './sells-per-service/sells-per-service.component';
 import { AuthGuard } from './services/auth.guard';
 import { TrackVisitsComponent } from './track-visits/track-visits.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full' ,component: HomeComponent},  
-  { path: 'login', component: LoginComponent},  
-  { path: 'signup', component: RegisterComponent},  
+  { path: 'login', component: LoginComponent},   
   { path: 'profile', component: ProfileComponent},  
   { path: 'q1', component: TrackVisitsComponent, canActivate: [AuthGuard]}, 
   { path: 'q2', canActivate: [AuthGuard],  children: [
