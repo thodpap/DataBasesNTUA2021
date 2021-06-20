@@ -6,7 +6,7 @@ fields: 1)type(str)
 8)
 
 fields: 1)service(str), total_count(int)
-	2)FirstName(str), LastName(str), BirthDate(date), Arrival_Date_time(date), Departure_Date_time(date), email(string), phone(
+	2)FirstName(str), LastName(str), BirthDate(date), Arrival_Date_time(date), Departure_Date_time(date), email(string), phone(str)
 	
 9)
 

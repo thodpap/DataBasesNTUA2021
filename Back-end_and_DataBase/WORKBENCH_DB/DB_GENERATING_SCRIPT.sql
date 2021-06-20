@@ -353,7 +353,7 @@ CREATE TABLE `provided_to` (
   `PlaceID` int NOT NULL,
   KEY `ServiceID_idx` (`ServiceID`),
   KEY `PlaceID_idx` (`PlaceID`),
-  CONSTRAINT `ServiceID_provided_to` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ServiceID_provided_to` FOREIGN KEY (`ServiceID`) REFERENCES `services` (`ServiceID`) ON UPDATE CASCADE,
   CONSTRAINT `SpaceID_provided_to` FOREIGN KEY (`PlaceID`) REFERENCES `places` (`PlaceID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -419,7 +419,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` VALUES (1,'food-cocktail in bar'),(2,'food-cocktail in restaurant'),(3,'hair saloon'),(4,'gym'),(5,'saouna'),(6,'meeting room'),(7,'accommodation in a room');
+INSERT INTO `services` VALUES (0,'no service'),(1,'food-cocktail in bar'),(2,'food-cocktail in restaurant'),(3,'hair saloon'),(4,'gym'),(5,'saouna'),(6,'meeting room'),(7,'accommodation in a room');
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -571,4 +571,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-20  1:40:24
+-- Dump completed on 2021-06-20 22:40:41
