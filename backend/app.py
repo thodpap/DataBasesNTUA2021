@@ -116,6 +116,13 @@ def getCovidServiceList():
     fields = ['service', 'arrivalDate', 'departureDate']
     return jsonify(execute_query(connection, queries.getCovidServiceListReport(nfc_id), cursor, fields))  
 
+@app.route('/people-covid', methods=['GET'])
+def getPeopleCovid():
+    nfc_id = request.args.get('nfc_id')
+    fields = ['firstName', 'lastName', 'service', 'arrivalDate', 'departureDate']
+    return jsonify(execute_query(connection, queries.getCovidPossibleInfections(nfc_id), cursor, fields))  
+
+
 sellsPer20 = [
     {'service': "Pool", 'sells': 100},
     {'service': "Room", 'sells': 100},
