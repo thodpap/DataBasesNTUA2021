@@ -379,8 +379,8 @@ DROP TABLE IF EXISTS `sales`;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `sales` AS SELECT 
- 1 AS `SERVICE`,
- 1 AS `TOTAL_COUNT`*/;
+ 1 AS `type`,
+ 1 AS `total_count`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -541,7 +541,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `sales` AS select `ch`.`ServiceID` AS `SERVICE`,sum(`ch`.`ServiceID`) AS `TOTAL_COUNT` from `charge_of_service` `ch` group by `ch`.`ServiceID` */;
+/*!50001 VIEW `sales` AS select `services`.`type` AS `type`,`temp`.`TOTAL_COUNT` AS `total_count` from (`services` join (select `charge_of_service`.`ServiceID` AS `ServiceID`,sum(`charge_of_service`.`ServiceID`) AS `TOTAL_COUNT` from `charge_of_service` group by `charge_of_service`.`ServiceID`) `temp`) where (`temp`.`ServiceID` = `services`.`ServiceID`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -573,4 +573,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-21  0:58:26
+-- Dump completed on 2021-06-21  1:09:32

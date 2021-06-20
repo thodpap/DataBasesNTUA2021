@@ -169,13 +169,13 @@ where services.ServiceID = temp2.ServiceID;
 -- 3rd
 
 -- parameters: (ex between 40 and 60)
-select count(NFC_ID) as max_used, ServiceID 
- FROM (SELECT distinct NFC_ID, ServiceID 
-FROM (SELECT ServiceID, ch.NFC_ID 
-FROM charge_of_service AS ch INNER JOIN customers AS c ON ch.NFC_ID=c.NFC_ID
-WHERE (age BETWEEN 40 AND 60) AND (month(charge_date_time) = 10) AND (year(charge_date_time) = 2021)
-) as temp
-) as temp1 GROUP BY ServiceID order by max_used DESC;
+select type, max_used 
+from services, (select count(NFC_ID) as max_used, ServiceID FROM 
+(SELECT distinct NFC_ID, ServiceID  FROM 
+(SELECT ServiceID, ch.NFC_ID  
+FROM charge_of_service AS ch INNER JOIN customers AS c ON ch.NFC_ID=c.NFC_ID 
+WHERE (age BETWEEN " + low + " AND " + high + ") AND (month(charge_date_time) = 10) AND (year(charge_date_time) = 2021)) as temp ) as 
+temp1 GROUP BY ServiceID order by max_used DESC) as temp2 where services.ServiceID = temp2.ServiceID;
 
 
 
