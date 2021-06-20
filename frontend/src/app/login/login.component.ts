@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';  
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { first } from 'rxjs/operators';
+import { first, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { User } from '../services/user.model';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void {
@@ -45,16 +48,17 @@ export class LoginComponent implements OnInit {
         return;
     }
     console.log("here");
-
-    this.loading = true;
+ 
     this.authenticationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
+      .pipe(take(1))
       .subscribe(
-          data => {
-              this.router.navigate([this.returnUrl]);
+          user  => { 
+            this.authenticationService.currentUserSubject.next(user);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.dataService.nfc_id = user.nfc_id;
+            this.router.navigate([this.returnUrl]);
           },
-          error => { 
-              this.loading = false;
+          error => {  
               alert('Wrong Credentials');
           }
         );

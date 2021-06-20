@@ -12,7 +12,7 @@ import { ProfileData } from '../profile/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
-    nfc_id: string = "74832740928374937"; 
+    nfc_id: string; 
 
     constructor(private http: HttpClient) { }
 

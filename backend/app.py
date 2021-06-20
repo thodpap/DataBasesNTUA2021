@@ -36,20 +36,7 @@ def getTrackVisits():
             if splited[1] != 'null':
                 cost = int(splited[1])
     if operator == 'null' and cost != None:
-        cost = None
-
-    # basicQ = oli i vasi
-    # if date != None:
-    # 	basicQ = query(basiQ)
-    # if service != None:
-    # 	basicQ = query new (basicQ)
-    # if operator != 'null' and cost != None:
-    # 	basicQ ....
-
-    # for each basicQ :
-    # 	 trackVisits.append(..)
-
-    # query
+        cost = None 
 
     return jsonify(trackVisits)
 
@@ -173,5 +160,19 @@ def updatePassword():
     return jsonify("success")
 
 
+@app.route('/users/authenticate', methods=['GET'])
+def authenticate():
+    username = request.args.get('username')
+    password = request.args.get('password')
+    print(username, password)
+    user = {
+        'nfc_id': '10',
+        'username': username,
+        'password': password,
+        'firstName': 'Thodoris',
+        'lastName': 'Paparrigopoulos'
+    }
+
+    return jsonify(user)
 if __name__ == "__main__":
     app.run(debug=True)
