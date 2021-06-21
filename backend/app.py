@@ -144,9 +144,10 @@ sellsPer61 = [
     {'service': "Tennis", 'sells': 0},
     {'service': "Video Games", 'sells': 0},
 ] 
-@app.route('/sells-per-age/<age>', methods=['GET'])
+@app.route('/room-sells-per-age/<age>', methods=['GET'])
 def getSellsPerAge(age):
 
+    print('/room-sells-per-age/<age>', age)
     fields = ['service', 'sells']
     if age == "20":
         # return jsonify(sellsPer20)
@@ -160,8 +161,9 @@ def getSellsPerAge(age):
 
     return "Error"
 
-@app.route('/per-service-per-age/<age>', methods=['GET'])
+@app.route('/service-sells-per-age/<age>', methods=['GET'])
 def getSellsPerAgePerService(age):
+    print('/service-sells-per-age/<age>', age)
     fields = ['service', 'sells'] 
     if age == "20":
         return jsonify(execute_query(connection, queries.getAgeServices("20","40"), cursor, fields))  
@@ -176,8 +178,10 @@ def getSellsPerAgePerService(age):
 
 @app.route('/popular-per-age/<age>', methods=['GET'])
 def getPopular(age): 
+    print('/popular-per-age/<age>', age)
     fields = ['service', 'sells'] 
     if age == "20":
+        print('/popular-per-age/<age>', age)
         return jsonify(execute_query(connection, queries.getPopularServices("20","40"), cursor, fields))  
 
     elif age == "41": 

@@ -16,7 +16,7 @@
       <select (change)="onChange2($event.target.value)"
       style="width: 20%;" 
       id="type" name="type"> 
-      <option value="0"></option>
+      <option value="0"> </option>
       <option value="1">Sells per room</option>
       <option value="2">Sells per service</option>
       <option value="3">Services with most visits</option> 
@@ -24,7 +24,7 @@
     </div>
   </div>
    <div class="col">
-     <app-graph *ngIf="age > 0 && type >= 0"></app-graph>
+     <app-graph></app-graph>
    </div>
 </div>
  

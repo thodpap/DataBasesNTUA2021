@@ -63,11 +63,11 @@ export class DataService {
 
     // services per ages q5
     getSellsPerAge(age : number) {
-        return this.http.get<Sells[]>(environment.apiUrl + '/sells-per-age/' + age); 
+        return this.http.get<Sells[]>(environment.apiUrl + '/room-sells-per-age/' + age); 
     }
 
     getSellsPerAgePerService(age:number) {
-        return this.http.get<Sells[]>(environment.apiUrl + '/per-service-per-age/' + age); 
+        return this.http.get<Sells[]>(environment.apiUrl + '/service-sells-per-age/' + age); 
     }
 
     getPopularServices(age:number) {

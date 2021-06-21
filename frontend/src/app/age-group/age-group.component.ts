@@ -12,8 +12,8 @@ export class AgeGroupComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  age = 0;
-  type = 0;    
+  age;
+  type;    
   constructor(private serviceList: ServiceListService, private dataService: DataService) {
     
   }
@@ -24,16 +24,17 @@ export class AgeGroupComponent implements OnInit {
   onChange(a) {
     switch(a) {
       case "0":
-        return ;
-        case "1":
-          this.age = 20;
-          break;
-        case "2":
-          this.age = 41;
-          break;
-        case "3":
-          this.age = 61;
-          break;
+        this.age = 0;
+        break;
+      case "1":
+        this.age = 20;
+        break;
+      case "2":
+        this.age = 41;
+        break;
+      case "3":
+        this.age = 61;
+        break;
       default:
         break;
     }
@@ -44,16 +45,17 @@ export class AgeGroupComponent implements OnInit {
     console.log(a);
     switch(a) {
       case "0":
-        return ;
-        case "1":
-          this.type = 0;
-          break;
-        case "2":
-          this.type = 1;
-          break;
-        case "3":
-          this.type = 2;
-          break;
+        this.type = -1;
+        break;
+      case "1":
+        this.type = 0;
+        break;
+      case "2":
+        this.type = 1;
+        break;
+      case "3":
+        this.type = 2;
+        break;
       default:
         break; 
     }
