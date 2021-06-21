@@ -88,13 +88,6 @@ def getTrackVisits():
     return jsonify(trackVisits)
 
 
-sellsPerVisit = [
-    {'service': "Pool", 'sells': 300},
-    {'service': "Room", 'sells': 500},
-    {'service': "Sauna", 'sells': 50},
-    {'service': "Tennis", 'sells': 600},
-    {'service': "Video Games", 'sells': 80},
-] 
 @app.route('/sells-per-service', methods=['GET'])
 def getSellsPerVisit():
     fields = ['service', 'sells'] 
@@ -123,27 +116,6 @@ def getPeopleCovid():
     return jsonify(execute_query(connection, queries.getCovidPossibleInfections(nfc_id), cursor, fields))  
 
 
-sellsPer20 = [
-    {'service': "Pool", 'sells': 100},
-    {'service': "Room", 'sells': 100},
-    {'service': "Sauna", 'sells': 20},
-    {'service': "Tennis", 'sells': 30},
-    {'service': "Video Games", 'sells': 5},
-]
-sellsPer41 = [
-    {'service': "Pool", 'sells': 50},
-    {'service': "Room", 'sells': 300},
-    {'service': "Sauna", 'sells': 320},
-    {'service': "Tennis", 'sells': 130},
-    {'service': "Video Games", 'sells': 135},
-]
-sellsPer61 = [
-    {'service': "Pool", 'sells': 50},
-    {'service': "Room", 'sells': 100},
-    {'service': "Sauna", 'sells': 500},
-    {'service': "Tennis", 'sells': 0},
-    {'service': "Video Games", 'sells': 0},
-] 
 @app.route('/room-sells-per-age/<age>', methods=['GET'])
 def getSellsPerAge(age):
 
